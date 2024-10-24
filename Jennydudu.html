@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light cyan background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #introduction {
+            background-color: #ffffff; /* White background for introduction */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #questionnaire {
+            display: none;
+            background-color: #ffffff; /* White background for questionnaire */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .question-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .summary {
+            display: none;
+            background-color: #ffffff; /* White background for summary */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        button {
+            background-color: #00796b; /* Teal button color */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #004d40; /* Darker teal on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div id="introduction">
+    <h2>Welcome to the Questionnaire!</h2>
+    <p>i know thins are vey hard for you but can u please take a moment to answer these questions honestly.</p>
+    <p>hav fun answering!!
+    </p>
+    <button onclick="startQuestionnaire()">Start Questionnaire</button>
+</div>
+
+<div id="questionnaire">
+    <div class="question-container" id="question1">
+        <h2>1. On a scale of 1-10, how happy do you feel reflecting on our relationship?</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider1" oninput="updateValue('slider1', 'value1')">
+        <p id="value1">5</p>
+    </div>
+
+    <div class="question-container" id="question2" style="display: none;">
+        <h2>2. How much do you miss the time we spent together? (1: Not at all, 10: A lot)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider2" oninput="updateValue('slider2', 'value2')">
+        <p id="value2">5</p>
+    </div>
+
+    <div class="question-container" id="question3" style="display: none;">
+        <h2>3. How comfortable are you discussing our past with your peers or friends? (1: Very uncomfortable, 10: Very comfortable)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider3" oninput="updateValue('slider3', 'value3')">
+        <p id="value3">5</p>
+    </div>
+
+    <div class="question-container" id="question4" style="display: none;">
+        <h2>4. Rate your feelings about the potential for us to reconnect in the future. (1: Not at all, 10: Very optimistic)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider4" oninput="updateValue('slider4', 'value4')">
+        <p id="value4">5</p>
+    </div>
+
+    <div class="question-container" id="question5" style="display: none;">
+        <h2>5. How well do you sleep these days? (1: Not well at all, 10: Very well)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider5" oninput="updateValue('slider5', 'value5')">
+        <p id="value5">5</p>
+    </div>
+
+    <div class="question-container" id="question6" style="display: none;">
+        <h2>6. Are you eating and drinking well? (1: Not at all, 10: Very well)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider6" oninput="updateValue('slider6', 'value6')">
+        <p id="value6">5</p>
+    </div>
+
+    <div class="question-container" id="question7" style="display: none;">
+        <h2>7. How afraid are you about the future? (1: Not afraid, 10: Very afraid)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider7" oninput="updateValue('slider7', 'value7')">
+        <p id="value7">5</p>
+    </div>
+
+    <div class="question-container" id="question8" style="display: none;">
+        <h2>8. Would you be interested in trying the dishes I make? (1: Not at all, 10: Very interested)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider8" oninput="updateValue('slider8', 'value8')">
+        <p id="value8">5</p>
+    </div>
+
+    <div class="question-container" id="question9" style="display: none;">
+        <h2>9. Have you been keeping that ring safe? (1: Not at all, 10: Very safe)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider9" oninput="updateValue('slider9', 'value9')">
+        <p id="value9">5</p>
+    </div>
+
+    <div class="question-container" id="question10" style="display: none;">
+        <h2>10. Will you be open to telling me about which university you're going to when you get into it? (1: Not at all, 10: Definitely)</h2>
+        <input type="range" min="1" max="10" value="5" class="slider" id="slider10" oninput="updateValue('slider10', 'value10')">
+        <p id="value10">5</p>
+    </div>
+
+    <button id="nextButton" onclick="nextQuestion()">Next</button>
+    <button id="submitButton" style="display: none;" onclick="showSummary()">Show Summary</button>
+</div>
+
+<div class="summary" id="summary">
+    <h2>Summary of Your Responses:</h2>
+    <ul id="summaryList"></ul>
+    <button onclick="restart()">Restart</button>
+</div>
+
+<script>
+    let currentQuestion = 0;
+
+    function startQuestionnaire() {
+        document.getElementById('introduction').style.display = 'none';
+        document.getElementById('questionnaire').style.display = 'block';
+        document.getElementById('question1').style.display = 'block';
+    }
+
+    function updateValue(sliderId, valueId) {
+        const slider = document.getElementById(sliderId);
+        document.getElementById(valueId).innerText = slider.value;
+    }
+
+    function nextQuestion() {
+        const questions = document.querySelectorAll('.question-container');
+        if (currentQuestion < questions.length - 1) {
+            questions[currentQuestion].style.display = 'none';
+            currentQuestion++;
+            questions[currentQuestion].style.display = 'block';
+        } else {
+            questions[currentQuestion].style.display = 'none'; // Hide last question
+            document.getElementById('nextButton').style.display = 'none';
+            document.getElementById('submitButton').style.display = 'block';
+        }
+    }
+    function showSummary() {
+        const summaryList = document.getElementById('summaryList');
+        summaryList.innerHTML = ''; // Clear previous summary
+        for (let i = 1; i <= 10; i++) {
+            const value = document.getElementById(`value${i}`).innerText;
+            summaryList.innerHTML += `<li>Question ${i}: ${value}</li>`;
+        }
+        document.getElementById('questionnaire').style.display = 'none';
+        document.getElementById('summary').style.display = 'block';
+    }
+
+    function restart() {
+        currentQuestion = 0;
+        document.getElementById('summary').style.display = 'none';
+        document.getElementById('questionnaire').style.display = 'block';
+        document.getElementById('nextButton').style.display = 'block';
+        document.getElementById('submitButton').style.display = 'none';
+        const questions = document.querySelectorAll('.question-container');
+        questions.forEach(question => question.style.display = 'none');
+        questions[0].style.display = 'block'; // Show the first question again
+        // Reset all sliders
+        for (let i = 1; i <= 10; i++) {
+            document.getElementById(`slider${i}`).value = 5; // Reset to middle value
+            document.getElementById(`value${i}`).innerText = 5; // Update displayed value
+        }
+    }
+</script>
+
+</body>
+</html>
